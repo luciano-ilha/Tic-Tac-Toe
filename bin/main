@@ -6,4 +6,4 @@ p1_move = gets.chomp!
 puts "Player Two make your move: "
 p2_move = gets.chomp!
 
-puts "Player #{winner} wins!"
+puts "Player #{winner} wins!" 
