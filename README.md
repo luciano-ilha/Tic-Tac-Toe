@@ -12,6 +12,7 @@
 ---
 
 ## 📝 Content
+
 <p align="center">
 <a href="#about">About</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#installing">Installing</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
@@ -19,8 +20,8 @@
 <a href="#authors">Author</a>
 </p>
 
-
 ## 🧐 About <a name = "about"></a>
+
 Tic Tac Toe project.
 
 ## 🔧 Built with<a name = "built_using"></a>
@@ -34,7 +35,8 @@ Tic Tac Toe project.
 - Unpack (if downloaded);
 
 ```
-## ✒️  Autor <a name = "author"></a>
+
+## ✒️ Author <a name = "author"></a>
 
 👤 **Luciano Ilha**
 
@@ -44,9 +46,9 @@ Tic Tac Toe project.
 
 👤 **Paul Ogolla**
 
-- Github: [@fdfragoso](https://github.com/fdfragoso)
-- Twitter: [@fdfragoso](https://twitter.com/fdfragoso)
-- Linkedin: [@fdfragoso](https://www.linkedin.com/in/fdfragoso/)
+- Github: [@paulzay](https://github.com/paulzay)
+- Twitter: [@paulzay](https://twitter.com/_paulzay_)
+- Linkedin: [Paul Ogolla](https://www.linkedin.com/in/paulogolla/)
 
 ## 🤝 Contributing
 
