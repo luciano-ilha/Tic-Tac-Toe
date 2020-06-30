@@ -1,3 +1,9 @@
 #!/usr/bin/env ruby
 
-puts 'Hello World!'
+puts "Player One make your move: "
+p1_move = gets.chomp!
+
+puts "Player Two make your move: "
+p2_move = gets.chomp!
+
+puts "Player #{winner} wins!"
