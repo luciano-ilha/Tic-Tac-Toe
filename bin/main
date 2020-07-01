@@ -64,4 +64,3 @@ while update_board.length < 9
     puts 'It ends in a draw'
   end
 end
-
