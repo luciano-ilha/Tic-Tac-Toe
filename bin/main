@@ -3,7 +3,7 @@
 puts 'Are you ready for a game of tic tac toe?'
 
 board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-
+valid_moves = ["x", "o"]
 puts "What is your name p1?: "
 player1 = gets.chomp.capitalize
 
@@ -12,18 +12,24 @@ player2 = gets.chomp.capitalize
 
 5.times do
   puts 'Player One make your move: '
-  p1_choice = gets.chomp
-
-  p board[0]
-  p board[1]
-  p board[2]
+  p1_choice = gets.chomp.downcase
+  if p1_choice == valid_moves[0] || p1_choice == valid_moves[1]
+    p board[0]
+    p board[1]
+    p board[2]
+  else
+    puts "Invalid move"
+  end
 
   puts 'Player Two make your move: '
-  p2_choice = gets.chomp
-
-  p board[0]
-  p board[1]
-  p board[2]
+  p2_choice = gets.chomp.downcase
+  if p2_choice == valid_moves[0] || p2_choice == valid_moves[1]
+    p board[0]
+    p board[1]
+    p board[2]
+  else
+    puts "Invalid move"
+  end
 end
 
 # if player 1 wins
