@@ -2,11 +2,29 @@
 
 puts 'Are you ready for a game of tic tac toe?'
 
+available_moves = ["x","o"]
+
+board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+p board[0]
+p board[1]
+p board[2]
+
+puts "What is your name p1?: "
+player1 = gets.chomp
+
+puts "What is your name p2?: "
+player2 = gets.chomp
+
 puts 'Player One make your move: '
-player1 = gets.chomp!
+p1_choice = gets.chomp
 
 puts 'Player Two make your move: '
-player2 = gets.chomp!
+p2_choice = gets.chomp
+
+# unless game == over do
+#   # display the board
+#   game.move(gets.chomp)
+# end
 
 # if player 1 wins
 puts "Player #{player1} wins!"
