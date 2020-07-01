@@ -4,11 +4,11 @@ board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 puts 'Are you ready for a game of Tic Tac Toe?'
 
-puts "What is your name p1?: "
+puts 'What is your name p1?: '
 player1 = gets.chomp.capitalize
 puts "Welcome #{player1}!!"
 
-puts "What is your name p2?: "
+puts 'What is your name p2?: '
 player2 = gets.chomp.capitalize
 puts "Nice to meet you #{player2}!"
 
@@ -22,8 +22,8 @@ puts " #{board[6]} | #{board[7]} | #{board[8]} "
 player_start = [player1, player2].shuffle
 puts "The first one to move will be #{player_start[0]}, you'll be playing with 'X'."
 puts "#{player_start[0]} please make a move, choose from 1 to 9 please."
-
 player_choice = gets.chomp.to_i
+
 if player_choice > board.length
   puts "Invalid position, choose again!"
 else
