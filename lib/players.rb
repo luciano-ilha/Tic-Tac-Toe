@@ -1,7 +1,7 @@
 class Players
   attr_reader :name, :players 
 
-  def initialize(name, player1, player2)
+  def initialize(player1, player2)
     @name = name
     @players = [player1, player2]
   end

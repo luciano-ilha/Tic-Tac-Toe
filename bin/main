@@ -1,24 +1,17 @@
 #!/usr/bin/env ruby
 
-board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-update_board = []
+require_relative '../lib/board'
+require_relative '../lib/game'
+require_relative '../lib/players'
 
 puts 'Are you ready for a game of Tic Tac Toe?'
+print "What is your name p1?: "
+player1 = Player.new(gets.chomp.capitalize, "X")
+puts "Welcome #{player1.name}!!"
+print "What is your name p2?: "
+player2 = Players.new(gets.chomp.capitalize, "O")
+puts "Nice to meet you #{player2.name}!"
 
-puts 'What is your name p1?: '
-player1 = gets.chomp.capitalize
-puts "Welcome #{player1}!!"
-
-puts 'What is your name p2?: '
-player2 = gets.chomp.capitalize
-puts "Nice to meet you #{player2}!"
-
-puts 'This is the game board: '
-puts " #{board[0]} | #{board[1]} | #{board[2]} "
-puts '-----------'
-puts " #{board[3]} | #{board[4]} | #{board[5]} "
-puts '-----------'
-puts " #{board[6]} | #{board[7]} | #{board[8]} "
 
 while update_board.length < 9
   player_start = [player1, player2].shuffle
