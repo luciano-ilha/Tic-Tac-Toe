@@ -1,3 +1,66 @@
 #!/usr/bin/env ruby
 
-puts 'Hello World!'
+board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+update_board = []
+
+puts 'Are you ready for a game of Tic Tac Toe?'
+
+puts 'What is your name p1?: '
+player1 = gets.chomp.capitalize
+puts "Welcome #{player1}!!"
+
+puts 'What is your name p2?: '
+player2 = gets.chomp.capitalize
+puts "Nice to meet you #{player2}!"
+
+puts 'This is the game board: '
+puts " #{board[0]} | #{board[1]} | #{board[2]} "
+puts '-----------'
+puts " #{board[3]} | #{board[4]} | #{board[5]} "
+puts '-----------'
+puts " #{board[6]} | #{board[7]} | #{board[8]} "
+
+while update_board.length < 9
+  player_start = [player1, player2].shuffle
+  puts "The first one to move will be #{player_start[0]}, you'll be playing with 'X'."
+  puts "#{player_start[0]} please make a move, choose from 1 to 9 please."
+  player_choice = gets.chomp.to_i
+
+  if player_choice > board.length
+    puts 'Invalid position, choose again!'
+  elsif board.include?(player_choice)
+    update_board.insert((player_choice - 1), 'X')
+
+    puts " #{update_board[0]} | #{update_board[1]} | #{update_board[2]} "
+    puts '-----------'
+    puts " #{update_board[3]} | #{update_board[4]} | #{update_board[5]} "
+    puts '-----------'
+    puts " #{update_board[6]} | #{update_board[7]} | #{update_board[8]} "
+
+  end
+
+  player_next = player_start.reverse
+
+  puts "Now! #{player_next[0]}, it's your turn! Choose a move!"
+  player_next_choice = gets.chomp.to_i
+
+  if player_next_choice > board.length
+    puts 'Invalid position, choose again!'
+  elsif board.include?(player_next_choice)
+    update_board.insert((player_next_choice - 1), 'O')
+
+    puts " #{update_board[0]} | #{update_board[1]} | #{update_board[2]} "
+    puts '-----------'
+    puts " #{update_board[3]} | #{update_board[4]} | #{update_board[5]} "
+    puts '-----------'
+    puts " #{update_board[6]} | #{update_board[7]} | #{update_board[8]} "
+
+  end
+
+  if update_board.length > 9
+    puts 'Game over'
+  else
+    # if there's a stalemate
+    puts 'It ends in a draw'
+  end
+end
