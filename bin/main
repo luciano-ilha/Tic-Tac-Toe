@@ -4,54 +4,80 @@ require_relative '../lib/board'
 require_relative '../lib/game'
 require_relative '../lib/players'
 
-puts 'Are you ready for a game of Tic Tac Toe?'
-print "What is your name p1?: \n"
+puts "Are you ready for a game of Tic Tac Toe?"
+print "\n"
+print "What is your name P1?: "
 player1 = Players.new(gets.chomp.capitalize, "X")
+print "\n"
 puts "Welcome #{player1.name}!!"
-print "What is your name p2?: "
+print "\n"
+print "What is your name P2?: "
 player2 = Players.new(gets.chomp.capitalize, "O")
+print "\n"
 puts "Nice to meet you #{player2.name}!"
+print "\n"
 game = Game.new(player1, player2)
 puts 'This is the game board:'
+print "\n"
 game.board.display_board
+print "\n"
 
 update_board = []
+
+player_start = [player1, player2].shuffle
+puts "The first one to move will be #{game.player_start.name}, you'll be playing with 'X'."
+print "\n"
+
 while update_board.length < 9
-  player_start = [player1, player2].shuffle
-  puts "The first one to move will be #{game.player_start.name}, you'll be playing with 'X'."
-  puts "#{game.player_start.name} please make a move, choose from 1 to 9 please."
+  puts "#{game.player_start.name} please make a move, choose from 1 to 9."
   player_choice = gets.chomp.to_i
-  # if game.board.include?(player_choice)
-  update_board.insert((player_choice - 1), 'X')
-
-  puts " #{update_board[0]} | #{update_board[1]} | #{update_board[2]} "
-  puts '-----------'
-  puts " #{update_board[3]} | #{update_board[4]} | #{update_board[5]} "
-  puts '-----------'
-  puts " #{update_board[6]} | #{update_board[7]} | #{update_board[8]} "
-
-  # end
+  print "\n"
+  
+  if update_board[player_choice - 1] != nil
+    puts "This position already taken! Choose another one."
+    print "\n"
+  else
+    update_board.insert((player_choice - 1), 'X')
+    if update_board[player_choice] == nil
+      update_board.delete_at(player_choice)
+    
+      puts " #{update_board[0]} | #{update_board[1]} | #{update_board[2]} "
+      puts '-----------'
+      puts " #{update_board[3]} | #{update_board[4]} | #{update_board[5]} "
+      puts '-----------'
+      puts " #{update_board[6]} | #{update_board[7]} | #{update_board[8]} "
+      print "\n"
+    end
+  end
 
   player_next = player_start.reverse
 
-  puts "Now! #{game.player_next.name}, it's your turn! Choose a move!"
+  puts "Now! #{game.player_next.name}, it's your turn! Choose a move! Choose from 1 to 9 please."
+  print "\n"
   player_next_choice = gets.chomp.to_i
 
-  # board.include?(player_next_choice)
-  update_board.insert((player_next_choice - 1), 'O')
+  if update_board[player_next_choice - 1] != nil
+    puts "This position already taken! Choose another one."
+    print "\n"
+  else
+    update_board.insert((player_next_choice - 1), 'O')
+    if update_board[player_next_choice] == nil
+      update_board.delete_at(player_next_choice)
+    end
 
-  puts " #{update_board[0]} | #{update_board[1]} | #{update_board[2]} "
-  puts '-----------'
-  puts " #{update_board[3]} | #{update_board[4]} | #{update_board[5]} "
-  puts '-----------'
-  puts " #{update_board[6]} | #{update_board[7]} | #{update_board[8]} "
-
+    puts " #{update_board[0]} | #{update_board[1]} | #{update_board[2]} "
+    puts '-----------'
+    puts " #{update_board[3]} | #{update_board[4]} | #{update_board[5]} "
+    puts '-----------'
+    puts " #{update_board[6]} | #{update_board[7]} | #{update_board[8]} "
+    print "\n"
+  end
   
 
-  if update_board.length > 9
-    puts 'Game over'
-  else
-    # if there's a stalemate
-    puts 'It ends in a draw'
-  end
+  # if update_board.length > 9
+  #   puts 'Game over'
+  # else
+  #   # if there's a stalemate
+  #   puts 'It ends in a draw'
+  # end
 end
