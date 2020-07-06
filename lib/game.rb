@@ -5,6 +5,8 @@ class Game
     @players = [player1, player2]
     $player_start = players_shuffle
     $player_next = switch_players
+    $position_taken = true
+    $next_position_taken = true
     @example_board = Board.new
     @game_board = Board.new
   end
@@ -25,16 +27,20 @@ class Game
     player_choice = gets.chomp.to_i
     print "\n"
 
-    if game_board.updated_board[player_choice - 1] != nil
-      puts "This position already taken! Choose another one."
-      print "\n"
-    else
-      game_board.updated_board.insert((player_choice - 1), "#{$player_start[0].first_player_icon}")
-      if game_board.updated_board[player_choice] == nil
-        game_board.updated_board.delete_at(player_choice)
-      
-        game_board.update_board
+    while $position_taken do
+      if game_board.updated_board[player_choice - 1] != nil
+        puts "This position already taken! Choose another one."
         print "\n"
+        player_choice = gets.chomp.to_i
+      else
+        game_board.updated_board.insert((player_choice - 1), "#{$player_start[0].first_player_icon}")
+        if game_board.updated_board[player_choice] == nil
+          game_board.updated_board.delete_at(player_choice)
+          
+          game_board.update_board
+          print "\n"
+          $position_taken = false
+        end
       end
     end
 
@@ -42,16 +48,20 @@ class Game
     print "\n"
     player_next_choice = gets.chomp.to_i
 
-    if game_board.updated_board[player_next_choice - 1] != nil
-      puts "This position already taken! Choose another one."
-      print "\n"
-    else
-      game_board.updated_board.insert((player_next_choice - 1), "#{$player_next[0].second_player_icon}")
-      if game_board.updated_board[player_next_choice] == nil
-        game_board.updated_board.delete_at(player_next_choice)
-      
-        game_board.update_board
+    while $next_position_taken do
+      if game_board.updated_board[player_next_choice - 1] != nil
+        puts "This position already taken! Choose another one."
         print "\n"
+        player_next_choice = gets.chomp.to_i
+      else
+        game_board.updated_board.insert((player_next_choice - 1), "#{$player_next[0].second_player_icon}")
+        if game_board.updated_board[player_next_choice] == nil
+          game_board.updated_board.delete_at(player_next_choice)
+          
+          game_board.update_board
+          print "\n"
+          $next_position_taken = false
+        end
       end
     end
   end
