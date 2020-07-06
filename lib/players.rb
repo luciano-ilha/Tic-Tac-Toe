@@ -1,8 +1,9 @@
 class Players
-  attr_reader :name, :player_choice
+  attr_reader :name, :first_player_icon, :second_player_icon
 
-  def initialize(name, player_choice)
+  def initialize(name)
     @name = name
-    @player_choice = player_choice
+    @first_player_icon = "X"
+    @second_player_icon = "O"
   end
 end
