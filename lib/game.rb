@@ -7,6 +7,8 @@ class Game
     $player_next = switch_players
     $position_taken = true
     $next_position_taken = true
+    $not_the_end_p1 = true
+    $not_the_end_p2 = true
     @example_board = Board.new
     @game_board = Board.new
   end
@@ -19,50 +21,103 @@ class Game
     switch_players = $player_start.reverse
   end
 
+  def the_end_p1
+    if (game_board.updated_board[0] == "X" && game_board.updated_board[1] == "X" && game_board.updated_board[2] == "X") || game_board.updated_board.length == 9
+      $not_the_end_p1 = false
+    elsif (game_board.updated_board[3] == "X" && game_board.updated_board[4] == "X" && game_board.updated_board[5] == "X") || game_board.updated_board.length == 9
+      $not_the_end_p1 = false
+    elsif (game_board.updated_board[6] == "X" && game_board.updated_board[7] == "X" && game_board.updated_board[8] == "X") || game_board.updated_board.length == 9
+      $not_the_end_p1 = false
+    elsif (game_board.updated_board[0] == "X" && game_board.updated_board[3] == "X" && game_board.updated_board[6] == "X") || game_board.updated_board.length == 9
+      $not_the_end_p1 = false
+    elsif (game_board.updated_board[1] == "X" && game_board.updated_board[4] == "X" && game_board.updated_board[7] == "X") || game_board.updated_board.length == 9
+      $not_the_end_p1 = false
+    elsif (game_board.updated_board[2] == "X" && game_board.updated_board[5] == "X" && game_board.updated_board[8] == "X") || game_board.updated_board.length == 9
+      $not_the_end_p1 = false
+    elsif (game_board.updated_board[0] == "X" && game_board.updated_board[4] == "X" && game_board.updated_board[8] == "X") || game_board.updated_board.length == 9
+      $not_the_end_p1 = false
+    elsif (game_board.updated_board[2] == "X" && game_board.updated_board[4] == "X" && game_board.updated_board[6] == "X") || game_board.updated_board.length == 9
+      $not_the_end_p1 = false
+    else
+      $not_the_end_p1 = true
+    end
+  end
+
+  def the_end_p2
+    if (game_board.updated_board[0] == "O" && game_board.updated_board[1] == "O" && game_board.updated_board[2] == "O") || game_board.updated_board.length == 9
+      $not_the_end_p2 = false
+    elsif (game_board.updated_board[3] == "O" && game_board.updated_board[4] == "O" && game_board.updated_board[5] == "O") || game_board.updated_board.length == 9
+      $not_the_end_p2 = false
+    elsif (game_board.updated_board[6] == "O" && game_board.updated_board[7] == "O" && game_board.updated_board[8] == "O") || game_board.updated_board.length == 9
+      $not_the_end_p2 = false
+    elsif (game_board.updated_board[0] == "O" && game_board.updated_board[3] == "O" && game_board.updated_board[6] == "O") || game_board.updated_board.length == 9
+      $not_the_end_p2 = false
+    elsif (game_board.updated_board[1] == "O" && game_board.updated_board[4] == "O" && game_board.updated_board[7] == "O") || game_board.updated_board.length == 9
+      $not_the_end_p2 = false
+    elsif (game_board.updated_board[2] == "O" && game_board.updated_board[5] == "O" && game_board.updated_board[8] == "O") || game_board.updated_board.length == 9
+      $not_the_end_p2 = false
+    elsif (game_board.updated_board[0] == "O" && game_board.updated_board[4] == "O" && game_board.updated_board[8] == "O") || game_board.updated_board.length == 9
+      $not_the_end_p2 = false
+    elsif (game_board.updated_board[2] == "O" && game_board.updated_board[4] == "O" && game_board.updated_board[6] == "O") || game_board.updated_board.length == 9
+      $not_the_end_p2 = false
+    else
+      $not_the_end_p2 = true
+    end
+  end
+
   def game_on
     puts "The first one to move will be #{$player_start[0].name}, you'll be playing with #{$player_start[0].first_player_icon}."
     print "\n"
-
-    puts "#{$player_start[0].name} please make a move, choose from 1 to 9."
-    player_choice = gets.chomp.to_i
-    print "\n"
-
-    while $position_taken do
-      if game_board.updated_board[player_choice - 1] != nil
-        puts "This position already taken! Choose another one."
-        print "\n"
+    while $not_the_end_p1 == true && $not_the_end_p2 == true
+      if $not_the_end_p1 == true
+        puts "#{$player_start[0].name} please make a move, choose from 1 to 9."
         player_choice = gets.chomp.to_i
-      else
-        game_board.updated_board.insert((player_choice - 1), "#{$player_start[0].first_player_icon}")
-        if game_board.updated_board[player_choice] == nil
+        print "\n"
+        if game_board.updated_board[player_choice - 1] == nil
+          $position_taken == false
+          game_board.updated_board.insert((player_choice - 1), "#{$player_start[0].first_player_icon}")
           game_board.updated_board.delete_at(player_choice)
-          
           game_board.update_board
           print "\n"
-          $position_taken = false
+        else
+          while game_board.updated_board[player_choice - 1] != nil
+            puts "This position already taken! Choose another one."
+            print "\n"
+            player_choice = gets.chomp.to_i
+          end
+          $position_taken == false
+          game_board.updated_board.insert((player_choice - 1), "#{$player_start[0].first_player_icon}")
+          game_board.updated_board.delete_at(player_choice)
+          game_board.update_board
+          print "\n"
         end
       end
-    end
+      the_end_p1
 
-    puts "Now! #{$player_next[0].name}, it's your turn! Choose a move! Choose from 1 to 9 please."
-    print "\n"
-    player_next_choice = gets.chomp.to_i
-
-    while $next_position_taken do
-      if game_board.updated_board[player_next_choice - 1] != nil
-        puts "This position already taken! Choose another one."
+      if $not_the_end_p2 == true
+        puts "Now! #{$player_next[0].name}, it's your turn! Choose a move! Choose from 1 to 9 please."
         print "\n"
         player_next_choice = gets.chomp.to_i
-      else
-        game_board.updated_board.insert((player_next_choice - 1), "#{$player_next[0].second_player_icon}")
-        if game_board.updated_board[player_next_choice] == nil
-          game_board.updated_board.delete_at(player_next_choice)
-          
-          game_board.update_board
-          print "\n"
+        if game_board.updated_board[player_next_choice -1] == nil
           $next_position_taken = false
+          game_board.updated_board.insert((player_next_choice - 1), "#{$player_next[0].second_player_icon}")
+          game_board.updated_board.delete_at(player_next_choice)
+          game_board.update_board
+          print "\n"  
+        else
+          while game_board.updated_board[player_next_choice - 1] != nil
+            puts "This position already taken! Choose another one."
+            print "\n"
+            player_next_choice = gets.chomp.to_i
+          end
+          $next_position_taken = false
+          game_board.updated_board.insert((player_next_choice - 1), "#{$player_next[0].second_player_icon}")
+          game_board.updated_board.delete_at(player_next_choice)
+          game_board.update_board
+          print "\n" 
         end
       end
+      the_end_p2
     end
   end
 end
