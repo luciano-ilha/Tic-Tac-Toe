@@ -4,14 +4,14 @@ require_relative '../lib/board'
 require_relative '../lib/game'
 require_relative '../lib/players'
 
-puts "Are you ready for a game of Tic Tac Toe?"
+puts 'Are you ready for a game of Tic Tac Toe?'
 print "\n"
-print "What is your name P1?: "
+print 'What is your name P1?: '
 player1 = Players.new(gets.chomp.capitalize)
 print "\n"
 puts "Welcome #{player1.name}!!"
 print "\n"
-print "What is your name P2?: "
+print 'What is your name P2?: '
 player2 = Players.new(gets.chomp.capitalize)
 print "\n"
 puts "Nice to meet you #{player2.name}!"

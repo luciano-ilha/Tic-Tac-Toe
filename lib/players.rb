@@ -3,7 +3,7 @@ class Players
 
   def initialize(name)
     @name = name
-    @first_player_icon = "X"
-    @second_player_icon = "O"
+    @first_player_icon = 'X'
+    @second_player_icon = 'O'
   end
 end
