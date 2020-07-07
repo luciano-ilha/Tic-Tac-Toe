@@ -21,32 +21,29 @@ class Game
     switch_players = $player_start.reverse
   end
 
-  # while $not_the_end_p1 = false
-  #   puts "#{player1} wins!"
-  # end
   def the_end_p1
-    if (game_board.updated_board[0] == 'X' && game_board.updated_board[1] == 'X' && game_board.updated_board[2] == 'X') || game_board.updated_board.length == 9
+    if (game_board.updated_board[0] == 'X' && game_board.updated_board[1] == 'X' && game_board.updated_board[2] == 'X') || (game_board.updated_board.length == 9 && game_board.updated_board.none?(nil))
       $not_the_end_p1 = false
       puts "#{$player_start[0].name} wins!"
-    elsif (game_board.updated_board[3] == 'X' && game_board.updated_board[4] == 'X' && game_board.updated_board[5] == 'X') || game_board.updated_board.length == 9
+    elsif (game_board.updated_board[3] == 'X' && game_board.updated_board[4] == 'X' && game_board.updated_board[5] == 'X') || (game_board.updated_board.length == 9 && game_board.updated_board.none?(nil))
       $not_the_end_p1 = false
       puts "#{$player_start[0].name} wins!"
-    elsif (game_board.updated_board[6] == 'X' && game_board.updated_board[7] == 'X' && game_board.updated_board[8] == 'X') || game_board.updated_board.length == 9
+    elsif (game_board.updated_board[6] == 'X' && game_board.updated_board[7] == 'X' && game_board.updated_board[8] == 'X') || (game_board.updated_board.length == 9 && game_board.updated_board.none?(nil))
       $not_the_end_p1 = false
       puts "#{$player_start[0].name} wins!"
-    elsif (game_board.updated_board[0] == 'X' && game_board.updated_board[3] == 'X' && game_board.updated_board[6] == 'X') || game_board.updated_board.length == 9
+    elsif (game_board.updated_board[0] == 'X' && game_board.updated_board[3] == 'X' && game_board.updated_board[6] == 'X') || (game_board.updated_board.length == 9 && game_board.updated_board.none?(nil))
       $not_the_end_p1 = false
       puts "#{$player_start[0].name} wins!"
-    elsif (game_board.updated_board[1] == 'X' && game_board.updated_board[4] == 'X' && game_board.updated_board[7] == 'X') || game_board.updated_board.length == 9
+    elsif (game_board.updated_board[1] == 'X' && game_board.updated_board[4] == 'X' && game_board.updated_board[7] == 'X') || (game_board.updated_board.length == 9 && game_board.updated_board.none?(nil))
       $not_the_end_p1 = false
       puts "#{$player_start[0].name} wins!"
-    elsif (game_board.updated_board[2] == 'X' && game_board.updated_board[5] == 'X' && game_board.updated_board[8] == 'X') || game_board.updated_board.length == 9
+    elsif (game_board.updated_board[2] == 'X' && game_board.updated_board[5] == 'X' && game_board.updated_board[8] == 'X') || (game_board.updated_board.length == 9 && game_board.updated_board.none?(nil))
       $not_the_end_p1 = false
       puts "#{$player_start[0].name} wins!"
-    elsif (game_board.updated_board[0] == 'X' && game_board.updated_board[4] == 'X' && game_board.updated_board[8] == 'X') || game_board.updated_board.length == 9
+    elsif (game_board.updated_board[0] == 'X' && game_board.updated_board[4] == 'X' && game_board.updated_board[8] == 'X') || (game_board.updated_board.length == 9 && game_board.updated_board.none?(nil))
       $not_the_end_p1 = false
       puts "#{$player_start[0].name} wins!"
-    elsif (game_board.updated_board[2] == 'X' && game_board.updated_board[4] == 'X' && game_board.updated_board[6] == 'X') || game_board.updated_board.length == 9
+    elsif (game_board.updated_board[2] == 'X' && game_board.updated_board[4] == 'X' && game_board.updated_board[6] == 'X') || (game_board.updated_board.length == 9 && game_board.updated_board.none?(nil))
       $not_the_end_p1 = false
       puts "#{$player_start[0].name} wins!"
     else
@@ -55,34 +52,41 @@ class Game
   end
 
   def the_end_p2
-    if (game_board.updated_board[0] == 'O' && game_board.updated_board[1] == 'O' && game_board.updated_board[2] == 'O') || game_board.updated_board.length == 9
+    if (game_board.updated_board[0] == 'O' && game_board.updated_board[1] == 'O' && game_board.updated_board[2] == 'O') || (game_board.updated_board.length == 9 && game_board.updated_board.none?(nil))
       $not_the_end_p2 = false
       puts "#{$player_start[1].name} wins!"
-    elsif (game_board.updated_board[3] == 'O' && game_board.updated_board[4] == 'O' && game_board.updated_board[5] == 'O') || game_board.updated_board.length == 9
+    elsif (game_board.updated_board[3] == 'O' && game_board.updated_board[4] == 'O' && game_board.updated_board[5] == 'O') || (game_board.updated_board.length == 9 && game_board.updated_board.none?(nil))
       $not_the_end_p2 = false
       puts "#{$player_start[1].name} wins!"
-    elsif (game_board.updated_board[6] == 'O' && game_board.updated_board[7] == 'O' && game_board.updated_board[8] == 'O') || game_board.updated_board.length == 9
+    elsif (game_board.updated_board[6] == 'O' && game_board.updated_board[7] == 'O' && game_board.updated_board[8] == 'O') || (game_board.updated_board.length == 9 && game_board.updated_board.none?(nil))
       $not_the_end_p2 = false
       puts "#{$player_start[1].name} wins!"
-    elsif (game_board.updated_board[0] == 'O' && game_board.updated_board[3] == 'O' && game_board.updated_board[6] == 'O') || game_board.updated_board.length == 9
+    elsif (game_board.updated_board[0] == 'O' && game_board.updated_board[3] == 'O' && game_board.updated_board[6] == 'O') || (game_board.updated_board.length == 9 && game_board.updated_board.none?(nil))
       $not_the_end_p2 = false
       puts "#{$player_start[1].name} wins!"
-    elsif (game_board.updated_board[1] == 'O' && game_board.updated_board[4] == 'O' && game_board.updated_board[7] == 'O') || game_board.updated_board.length == 9
+    elsif (game_board.updated_board[1] == 'O' && game_board.updated_board[4] == 'O' && game_board.updated_board[7] == 'O') || (game_board.updated_board.length == 9 && game_board.updated_board.none?(nil))
       $not_the_end_p2 = false
       puts "#{$player_start[1].name} wins!"
-    elsif (game_board.updated_board[2] == 'O' && game_board.updated_board[5] == 'O' && game_board.updated_board[8] == 'O') || game_board.updated_board.length == 9
+    elsif (game_board.updated_board[2] == 'O' && game_board.updated_board[5] == 'O' && game_board.updated_board[8] == 'O') || (game_board.updated_board.length == 9 && game_board.updated_board.none?(nil))
       $not_the_end_p2 = false
       puts "#{$player_start[1].name} wins!"
-    elsif (game_board.updated_board[0] == 'O' && game_board.updated_board[4] == 'O' && game_board.updated_board[8] == 'O') || game_board.updated_board.length == 9
+    elsif (game_board.updated_board[0] == 'O' && game_board.updated_board[4] == 'O' && game_board.updated_board[8] == 'O') || (game_board.updated_board.length == 9 && game_board.updated_board.none?(nil))
       $not_the_end_p2 = false
       puts "#{$player_start[1].name} wins!"
-    elsif (game_board.updated_board[2] == 'O' && game_board.updated_board[4] == 'O' && game_board.updated_board[6] == 'O') || game_board.updated_board.length == 9
+    elsif (game_board.updated_board[2] == 'O' && game_board.updated_board[4] == 'O' && game_board.updated_board[6] == 'O') || (game_board.updated_board.length == 9 && game_board.updated_board.none?(nil))
       $not_the_end_p2 = false
       puts "#{$player_start[1].name} wins!"
     else
       $not_the_end_p2 = true
     end
   end
+
+  # def not_empty
+  #   if game_board.updated_board.include?(nil)
+  #     $not_the_end_p1 = true
+  #     $not_the_end_p2 = true
+  #   end
+  # end
 
   def game_on
     puts "The first one to move will be #{$player_start[0].name}, you'll be playing with #{$player_start[0].first_player_icon}."
@@ -112,6 +116,7 @@ class Game
         end
       end
       the_end_p1
+      # not_empty
       break if $not_the_end_p1 == false
 
       if $not_the_end_p2 == true
@@ -138,6 +143,7 @@ class Game
         end
       end
       the_end_p2
+      # not_empty
       break if $not_the_end_p2 == false
     end
   end
