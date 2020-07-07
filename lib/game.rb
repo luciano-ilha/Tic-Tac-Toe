@@ -93,7 +93,9 @@ class Game
         end
       end
       the_end_p1
-
+      if $not_the_end_p1 == false
+        break
+      end
       if $not_the_end_p2 == true
         puts "Now! #{$player_next[0].name}, it's your turn! Choose a move! Choose from 1 to 9 please."
         print "\n"
@@ -118,6 +120,9 @@ class Game
         end
       end
       the_end_p2
+      if $not_the_end_p2 == false
+        break
+      end
     end
   end
 end
