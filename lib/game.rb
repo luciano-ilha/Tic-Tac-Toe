@@ -15,11 +15,11 @@ class Game
   end
 
   def players_shuffle
-    players_shuffle = players.shuffle
+    players.shuffle
   end
 
   def switch_players
-    switch_players = $player_start.reverse
+    $player_start.reverse
   end
 
   def the_end_p1
@@ -83,7 +83,7 @@ class Game
   end
 
   def a_draw
-    return unless @@counter == 9 && $not_the_end_p2 = true && $not_the_end_p2 = true
+    return unless @@counter == 9 && $not_the_end_p2 == true && $not_the_end_p2 == true
 
     $not_the_end_p1 = false
     puts "It's a draw!"
