@@ -83,14 +83,15 @@ class Game
   end
 
   def a_draw
-    if @@counter == 9 && $not_the_end_p2 = true && $not_the_end_p2 = true
-      $not_the_end_p1 = false
-      puts "It's a draw!"
-    end
+    return unless @@counter == 9 && $not_the_end_p2 = true && $not_the_end_p2 = true
+
+    $not_the_end_p1 = false
+    puts "It's a draw!"
   end
 
   def game_on
-    puts "The first one to move will be #{$player_start[0].name}, you'll be playing with #{$player_start[0].first_player_icon}."
+    puts "The first one to move will be #{$player_start[0].name}"
+    puts "youll be playing with #{$player_start[0].first_player_icon}."
     print "\n"
     while $not_the_end_p1 == true && $not_the_end_p2 == true
       if $not_the_end_p1 == true
@@ -105,7 +106,7 @@ class Game
           print "\n"
           @@counter += 1
         else
-          while game_board.updated_board[player_choice - 1] != nil
+          while !game_board.updated_board[player_choice - 1].nil?
             puts 'This position already taken! Choose another one.'
             print "\n"
             player_choice = gets.chomp.to_i
@@ -120,7 +121,7 @@ class Game
       the_end_p1
       break if $not_the_end_p1 == false
 
-      is_a_draw
+      a_draw
       break if $not_the_end_p1 == false
 
       if $not_the_end_p2 == true
@@ -135,7 +136,7 @@ class Game
           print "\n"
           @@counter += 1
         else
-          while game_board.updated_board[player_next_choice - 1] != nil
+          while !game_board.updated_board[player_next_choice - 1].nil?
             puts 'This position already taken! Choose another one.'
             print "\n"
             player_next_choice = gets.chomp.to_i
@@ -150,7 +151,7 @@ class Game
       the_end_p2
       break if $not_the_end_p2 == false
 
-      is_a_draw
+      a_draw
       break if $not_the_end_p2 == false
     end
   end
