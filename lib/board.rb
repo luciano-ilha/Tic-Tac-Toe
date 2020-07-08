@@ -1,24 +1,18 @@
 class Board
-  attr_reader :example_board, :updated_board
+  attr_reader :board, :board_rows, :board_columns, :board_diagonals
 
   def initialize
-    @example_board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    @updated_board = []
+    @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    @board_rows =[[1,2,3], [4,5,6], [7,8,9]]
+    @board_columns = [[board[0], board[3], board[6]], [board[1], board[4], board[7]], [board[2],board[5], board[8]]]
+    @board_diagonals = [[board[0], board[4], board[8]], [board[2], board[4], board[6]]]
   end
 
   def display_board
-    puts " #{example_board[0]} | #{example_board[1]} | #{example_board[2]} "
+    puts " #{board[0]} | #{board[1]} | #{board[2]} "
     puts '-----------'
-    puts " #{example_board[3]} | #{example_board[4]} | #{example_board[5]} "
+    puts " #{board[3]} | #{board[4]} | #{board[5]} "
     puts '-----------'
-    puts " #{example_board[6]} | #{example_board[7]} | #{example_board[8]} "
-  end
-
-  def update_board
-    puts " #{updated_board[0]} | #{updated_board[1]} | #{updated_board[2]} "
-    puts '-----------'
-    puts " #{updated_board[3]} | #{updated_board[4]} | #{updated_board[5]} "
-    puts '-----------'
-    puts " #{updated_board[6]} | #{updated_board[7]} | #{updated_board[8]} "
+    puts " #{board[6]} | #{board[7]} | #{board[8]} "
   end
 end
