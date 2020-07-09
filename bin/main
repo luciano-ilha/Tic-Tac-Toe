@@ -27,17 +27,13 @@ puts "youll be playing with #{$player_start[0].first_player_icon}."
 print "\n"
 
 loop do
-  if $not_the_end == false
-    break
-  end
+  break if $not_the_end == false
 
   puts "#{$player_start[0].name} please make a move, choose from 1 to 9."
 
   game.game_on_p1
 
-  if $not_the_end == false
-    break
-  end
+  break if $not_the_end == false
 
   puts "Now! #{$player_next[0].name}, it's your turn! Choose a move! Choose from 1 to 9 please."
 

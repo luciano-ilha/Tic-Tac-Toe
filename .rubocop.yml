@@ -63,3 +63,7 @@ Metrics/BlockNesting:
   Enabled: false
 Style/NegatedWhile:
   Enabled: false
+Style/GuardClause:
+  Enabled: false
+Layout/LineLength:
+  Enabled: false
