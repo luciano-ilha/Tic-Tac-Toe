@@ -19,40 +19,14 @@ class Game
   end
 
   def the_end
-    game_board.board_rows.each do |arr|
-      if arr[0] = "X" && arr[1] = "X" && arr[2] = "X"
-        $not_the_end = false
-        puts "#{$player_start[0].name} wins!"
-      elsif arr[0] = "O" && arr[1] = "O" && arr[2] = "O"
-        $not_the_end = false
-        puts "#{$player_next[0].name} wins!"
-      else
-        $not_the_end = true
-      end
-    end
-      
-    game_board.board_columns.each do |arr|
-      if arr[0] = "X" && arr[1] = "X" && arr[2] = "X"
-        $not_the_end = false
-        puts "#{$player_start[0].name} wins!"
-      elsif arr[0] = "O" && arr[1] = "O" && arr[2] = "O"
-        $not_the_end = false
-        puts "#{$player_next[0].name} wins!"
-      else
-        $not_the_end = true
-      end
+    if (game_board.board[0] == "X" && game_board.board[1] == "X" && game_board.board[2] == "X") || (game_board.board[3] == "X" && game_board.board[4] == "X" && game_board.board[5] == "X") || (game_board.board[6] == "X" && game_board.board[7] == "X" && game_board.board[8] == "X") || (game_board.board[0] == "X" && game_board.board[3] == "X" && game_board.board[6] == "X") || (game_board.board[1] == "X" && game_board.board[4] == "X" && game_board.board[7] == "X") || (game_board.board[2] == "X" && game_board.board[5] == "X" && game_board.board[8] == "X") || (game_board.board[0] == "X" && game_board.board[4] == "X" && game_board.board[8] == "X") || (game_board.board[2] == "X" && game_board.board[4] == "X" && game_board.board[6] == "X")
+      puts "#{$player_start[0].name} wins!!"
+      $not_the_end = false
     end
 
-    game_board.board_diagonals.each do |arr|
-      if arr[0] = "X" && arr[1] = "X" && arr[2] = "X"
-        $not_the_end = false
-        puts "#{$player_start[0].name} wins!"
-      elsif arr[0] = "O" && arr[1] = "O" && arr[2] = "O"
-        $not_the_end = false
-        puts "#{$player_next[0].name} wins!"
-      else
-        $not_the_end = true
-      end
+    if (game_board.board[0] == "O" && game_board.board[1] == "O" && game_board.board[2] == "O") || (game_board.board[3] == "O" && game_board.board[4] == "O" && game_board.board[5] == "O") || (game_board.board[6] == "O" && game_board.board[7] == "O" && game_board.board[8] == "O") || (game_board.board[0] == "O" && game_board.board[3] == "O" && game_board.board[6] == "O") || (game_board.board[1] == "O" && game_board.board[4] == "O" && game_board.board[7] == "O") || (game_board.board[2] == "O" && game_board.board[5] == "O" && game_board.board[8] == "O") || (game_board.board[0] == "O" && game_board.board[4] == "O" && game_board.board[8] == "O") || (game_board.board[2] == "O" && game_board.board[4] == "O" && game_board.board[6] == "O")
+      puts "#{$player_start[0].name} wins!!"
+      $not_the_end = false
     end
   end
 
@@ -62,40 +36,39 @@ class Game
     puts "It's a draw!"
   end
 
+  
   def game_on_p1
     player_choice = gets.chomp.to_i
     print "\n"
-    while $not_the_end == true
-      if player_choice <= 0 || player_choice > 9
-        puts "Invalid move!! Choose again"
-        player_choice = gets.chomp.to_i
-        print "\n"
-      elsif game_board.board.map! { |num| num == player_choice ? "#{$player_start[0].first_player_icon}" : num }
-        game_board.display_board
-        print "\n"
-        @@counter += 1
-        break
-      end
-      # the_end
+    while player_choice <= 0 || player_choice > 9
+      puts "Invalid move!! Choose again"
+      player_choice = gets.chomp.to_i
+      print "\n"
     end
+    if game_board.board.map! { |num| num == player_choice ? "#{$player_start[0].first_player_icon}" : num }
+      game_board.display_board
+      print "\n"
+      @@counter += 1
+    end
+    the_end
+    a_draw
   end
 
   def game_on_p2
     player_next_choice = gets.chomp.to_i
     print "\n"
-    while $not_the_end == true
-      if player_next_choice <= 0 || player_next_choice > 9
-        puts "Invalid move!! Choose again"
-        player_next_choice = gets.chomp.to_i
-        print "\n"
-      elsif game_board.board.map! { |num| num == player_next_choice ? "#{$player_next[0].second_player_icon.to_s}" : num }
-        game_board.display_board
-        print "\n"
-        @@counter += 1
-        break
-      end
-      # the_end
+    while player_next_choice <= 0 || player_next_choice > 9
+      puts "Invalid move!! Choose again"
+      player_next_choice = gets.chomp.to_i
+      print "\n"
     end
+    if game_board.board.map! { |num| num == player_next_choice ? "#{$player_next[0].second_player_icon.to_s}" : num }
+      game_board.display_board
+      print "\n"
+      @@counter += 1
+    end
+    the_end
+    a_draw
   end
 
   # def game_on

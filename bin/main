@@ -25,23 +25,34 @@ puts "The first one to move will be #{$player_start[0].name}"
 print "\n"
 puts "youll be playing with #{$player_start[0].first_player_icon}."
 print "\n"
-puts "#{$player_start[0].name} please make a move, choose from 1 to 9."
 
-game.game_on_p1
-
-puts "Now! #{$player_next[0].name}, it's your turn! Choose a move! Choose from 1 to 9 please."
-
-game.game_on_p2
-
-game_on = true
-
-while game_on
+loop do
+  if $not_the_end == false
+    break
+  end
 
   puts "#{$player_start[0].name} please make a move, choose from 1 to 9."
 
   game.game_on_p1
 
+  if $not_the_end == false
+    break
+  end
+
   puts "Now! #{$player_next[0].name}, it's your turn! Choose a move! Choose from 1 to 9 please."
 
   game.game_on_p2
 end
+
+# game_on = true
+
+# while game_on
+
+#   puts "#{$player_start[0].name} please make a move, choose from 1 to 9."
+
+#   game.game_on_p1
+
+#   puts "Now! #{$player_next[0].name}, it's your turn! Choose a move! Choose from 1 to 9 please."
+
+#   game.game_on_p2
+# end
