@@ -35,7 +35,6 @@ class Game
     $not_the_end = false
     puts "It's a draw!"
   end
-
   
   def game_on_p1
     player_choice = gets.chomp.to_i
@@ -70,44 +69,4 @@ class Game
     the_end
     a_draw
   end
-
-  # def game_on
-  # 
-  #   the_end_p1
-  #   break if $not_the_end_p1 == false
-
-  #   a_draw
-  #   break if $not_the_end_p1 == false
-
-  #   if $not_the_end_p2 == true
-  #     puts "Now! #{$player_next[0].name}, it's your turn! Choose a move! Choose from 1 to 9 please."
-  #     print "\n"
-  #     player_next_choice = gets.chomp.to_i
-  #     if game_board.updated_board[player_next_choice - 1].nil?
-  #       $next_position_taken = false
-  #       game_board.updated_board.insert((player_next_choice - 1), $player_next[0].second_player_icon.to_s)
-  #       game_board.updated_board.delete_at(player_next_choice)
-  #       game_board.update_board
-  #       print "\n"
-  #       @@counter += 1
-  #     else
-  #       while !game_board.updated_board[player_next_choice - 1].nil?
-  #         puts 'This position already taken! Choose another one.'
-  #         print "\n"
-  #         player_next_choice = gets.chomp.to_i
-  #       end
-  #       $next_position_taken = false
-  #       game_board.updated_board.insert((player_next_choice - 1), $player_next[0].second_player_icon.to_s)
-  #       game_board.updated_board.delete_at(player_next_choice)
-  #       game_board.update_board
-  #       print "\n"
-  #     end
-  #   end
-  #   the_end_p2
-  #   break if $not_the_end_p2 == false
-
-  #   a_draw
-  #   break if $not_the_end_p2 == false
-  # end
-# end
 end

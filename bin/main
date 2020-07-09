@@ -43,16 +43,3 @@ loop do
 
   game.game_on_p2
 end
-
-# game_on = true
-
-# while game_on
-
-#   puts "#{$player_start[0].name} please make a move, choose from 1 to 9."
-
-#   game.game_on_p1
-
-#   puts "Now! #{$player_next[0].name}, it's your turn! Choose a move! Choose from 1 to 9 please."
-
-#   game.game_on_p2
-# end
