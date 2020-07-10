@@ -19,7 +19,7 @@ print "\n"
 game = Game.new(player1, player2)
 puts 'This is the game board:'
 print "\n"
-game.game_board.display_board
+puts game.game_board.display_board
 print "\n"
 puts "The first one to move will be #{$player_start[0].name}"
 print "\n"

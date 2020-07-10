@@ -46,7 +46,7 @@ class Game
       print "\n"
     end
     if game_board.board.map! { |num| num == player_choice ? $player_start[0].first_player_icon.to_s : num }
-      game_board.display_board
+      puts game_board.display_board
       print "\n"
       @@counter += 1
     end
@@ -63,7 +63,7 @@ class Game
       print "\n"
     end
     if game_board.board.map! { |num| num == player_next_choice ? $player_next[0].second_player_icon.to_s : num }
-      game_board.display_board
+      puts game_board.display_board
       print "\n"
       @@counter += 1
     end
