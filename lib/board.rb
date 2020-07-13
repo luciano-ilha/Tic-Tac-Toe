@@ -9,7 +9,6 @@ class Board
   end
 
   def display_board
-    # display_board =
     "#{board[0]} | #{board[1]} | #{board[2]}\n" \
     "---------\n" \
     "#{board[3]} | #{board[4]} | #{board[5]}\n" \
