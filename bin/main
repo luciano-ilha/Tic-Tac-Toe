@@ -44,19 +44,17 @@ loop do
   end
 end
 
-# puts "Now #{game_board.player_next[0]}, it's your turn! Please make a move, choose from 1 to 9."
-# player_choice = Choices.new(gets.chomp.to_i)
-# print "\n"
+puts "Now #{game_board.player_next[0]}, it's your turn! Please make a move, choose from 1 to 9."
+game.player_choice = gets.chomp.to_i
+print "\n"
 
-# puts game.player2_choice
-
-# loop do
-#   if game.player2_choice <= 0 || game.player1_choice > 9 
-#     puts 'Invalid move!! Choose again'
-#     game.player1_choice = gets.chomp.to_i
-#     print "\n"
-#   elsif game.player1_choice > 0 || game.player1_choice < 9
-#     game.game_on_p1
-#     break
-#   end
-# end
+loop do
+  if game.player_choice <= 0 || game.player_choice > 9 
+    puts 'Invalid move!! Choose again'
+    game.player_choice = gets.chomp.to_i
+    print "\n"
+  elsif game.player_choice > 0 || game.player_choice < 9
+    game.game_on_p2
+    break
+  end
+end
