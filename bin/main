@@ -26,35 +26,40 @@ puts "The first one to move will be #{game_board.player_start[0]}"
 print "\n"
 puts "youll be playing with #{player1.first_player_icon}."
 print "\n"
-
-puts "#{game_board.player_start[0]} please make a move, choose from 1 to 9."
-player_choice = Choices.new(gets.chomp.to_i)
-print "\n"
+player_choice = Choices.new
 
 game = Game.new(player1, player2, player_choice, game_board)
 
-loop do
-  if game.player_choice <= 0 || game.player_choice > 9 
-    puts 'Invalid move!! Choose again'
+while game.not_the_end == true
+  if game.not_the_end == true
+    puts "#{game_board.player_start[0]} please make a move, choose from 1 to 9."
     game.player_choice = gets.chomp.to_i
     print "\n"
-  elsif game.player_choice > 0 || game.player_choice < 9
-    game.game_on_p1
-    break
+    loop do
+      if game.player_choice <= 0 || game.player_choice > 9 
+        puts 'Invalid move!! Choose again'
+        game.player_choice = gets.chomp.to_i
+        print "\n"
+      elsif game.player_choice > 0 || game.player_choice < 9
+        game.game_on_p1
+        break
+      end
+    end
   end
-end
 
-puts "Now #{game_board.player_next[0]}, it's your turn! Please make a move, choose from 1 to 9."
-game.player_choice = gets.chomp.to_i
-print "\n"
-
-loop do
-  if game.player_choice <= 0 || game.player_choice > 9 
-    puts 'Invalid move!! Choose again'
+  if game.not_the_end == true
+    puts "Now #{game_board.player_next[0]}, it's your turn! Please make a move, choose from 1 to 9."
     game.player_choice = gets.chomp.to_i
     print "\n"
-  elsif game.player_choice > 0 || game.player_choice < 9
-    game.game_on_p2
-    break
+    loop do
+      if game.player_choice <= 0 || game.player_choice > 9 
+        puts 'Invalid move!! Choose again'
+        game.player_choice = gets.chomp.to_i
+        print "\n"
+      elsif game.player_choice > 0 || game.player_choice < 9
+        game.game_on_p2
+        break
+      end
+    end
   end
 end

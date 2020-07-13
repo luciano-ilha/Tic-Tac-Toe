@@ -1,11 +1,16 @@
 class Board
-  attr_reader :board, :board_rows, :board_columns, :board_diagonals, :player_name, :player_start, :player_next
+  attr_reader :board, :board_rows, :board_columns, :board_column1, :board_column2, :board_column3, :board_diagonal_lr, :board_diagonal_rl, :player_name, :player_start, :player_next
 
   def initialize(player1, player2)
     @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    @board_rows = [[board[0], board[1], board[2]], [board[3], board[4], board[5]], [board[6], board[7], board[8]]]
-    @board_columns = [[board[0], board[3], board[6]], [board[1], board[4], board[7]], [board[2], board[5], board[8]]]
-    @board_diagonals = [[board[0], board[4], board[8]], [board[2], board[4], board[6]]]
+    @board_column1 = [board[0], board[3], board[6]]
+    @board_column2 = [board[1], board[4], board[7]]
+    @board_column3 = [board[2], board[5], board[8]]
+    @board_diagonal_lr = [board[0], board[4], board[8]]
+    @board_diagonal_rl = [board[2], board[4], board[6]]
+    # @board_rows = [[board[0], board[1], board[2]], [board[3], board[4], board[5]], [board[6], board[7], board[8]]]
+    # @board_columns = [[board[0], board[3], board[6]], [board[1], board[4], board[7]], [board[2], board[5], board[8]]]
+    # @board_diagonals = [[board[0], board[4], board[8]], [board[2], board[4], board[6]]]
     @player_name = [player1.name, player2.name]
     @player_start = players_shuffle
     @player_next = switch_players
