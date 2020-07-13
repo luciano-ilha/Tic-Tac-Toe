@@ -11,29 +11,37 @@ class Game
     @@counter = 0
   end
 
-  def all_equal(arr, player_icon)
+  def all_equal_p1(arr, player_icon)
     if arr[0] == player_icon && arr[1] == player_icon && arr[2] == player_icon
+      puts "#{player1.name} wins!"
+      return @not_the_end = false
+    end
+  end
+
+  def all_equal_p2(arr, player_icon)
+    if arr[0] == player_icon && arr[1] == player_icon && arr[2] == player_icon
+      puts "#{player2.name} wins!"
       return @not_the_end = false
     end
   end
 
   def check_win
-    all_equal(game_board.board[0..2], player1.first_player_icon) ||
-    all_equal(game_board.board[3..5], player1.first_player_icon) ||
-    all_equal(game_board.board[6..8], player1.first_player_icon) ||
-    all_equal(game_board.board_column1, player1.first_player_icon) ||
-    all_equal(game_board.board_column2, player1.first_player_icon) ||
-    all_equal(game_board.board_column3, player1.first_player_icon) ||
-    all_equal(game_board.board_diagonal_lr, player1.first_player_icon) ||
-    all_equal(game_board.board_diagonal_rl, player1.first_player_icon) ||
-    all_equal(game_board.board[0..2], player2.second_player_icon) ||
-    all_equal(game_board.board[3..5], player2.second_player_icon) ||
-    all_equal(game_board.board[6..8], player2.second_player_icon) ||
-    all_equal(game_board.board_column1, player2.second_player_icon) ||
-    all_equal(game_board.board_column2, player2.second_player_icon) ||
-    all_equal(game_board.board_column3, player2.second_player_icon) ||
-    all_equal(game_board.board_diagonal_lr, player2.second_player_icon) ||
-    all_equal(game_board.board_diagonal_rl, player2.second_player_icon)
+    all_equal_p1(game_board.board[0..2], player1.first_player_icon) ||
+    all_equal_p1(game_board.board[3..5], player1.first_player_icon) ||
+    all_equal_p1(game_board.board[6..8], player1.first_player_icon) ||
+    all_equal_p1([game_board.board[0], game_board.board[3], game_board.board[6]], player1.first_player_icon) ||
+    all_equal_p1([game_board.board[1], game_board.board[4], game_board.board[7]], player1.first_player_icon) ||
+    all_equal_p1([game_board.board[2], game_board.board[5], game_board.board[8]], player1.first_player_icon) ||
+    all_equal_p1([game_board.board[0], game_board.board[4], game_board.board[8]], player1.first_player_icon) ||
+    all_equal_p1([game_board.board[2], game_board.board[4], game_board.board[6]], player1.first_player_icon) ||
+    all_equal_p2(game_board.board[0..2], player2.second_player_icon) ||
+    all_equal_p2(game_board.board[3..5], player2.second_player_icon) ||
+    all_equal_p2(game_board.board[6..8], player2.second_player_icon) ||
+    all_equal_p2([game_board.board[0], game_board.board[3], game_board.board[6]], player2.second_player_icon) ||
+    all_equal_p2([game_board.board[1], game_board.board[4], game_board.board[7]], player2.second_player_icon) ||
+    all_equal_p2([game_board.board[2], game_board.board[5], game_board.board[8]], player2.second_player_icon) ||
+    all_equal_p2([game_board.board[0], game_board.board[4], game_board.board[8]], player2.second_player_icon) ||
+    all_equal_p2([game_board.board[2], game_board.board[4], game_board.board[6]], player2.second_player_icon)
   end
 
   def a_draw

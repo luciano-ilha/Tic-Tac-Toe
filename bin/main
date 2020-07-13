@@ -52,7 +52,7 @@ while game.not_the_end == true
     game.player_choice = gets.chomp.to_i
     print "\n"
     loop do
-      if game.player_choice <= 0 || game.player_choice > 9 
+      if game.player_choice <= 0 || game.player_choice > 9
         puts 'Invalid move!! Choose again'
         game.player_choice = gets.chomp.to_i
         print "\n"
