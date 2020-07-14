@@ -1,66 +1,65 @@
 #!/usr/bin/env ruby
 
-board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-update_board = []
+require_relative '../lib/board'
+require_relative '../lib/choices'
+require_relative '../lib/game'
+require_relative '../lib/players'
 
 puts 'Are you ready for a game of Tic Tac Toe?'
+print "\n"
+print 'What is your name P1?: '
+player1 = Players.new(gets.chomp.capitalize)
+print "\n"
+puts "Welcome #{player1.name}!!"
+print "\n"
+print 'What is your name P2?: '
+player2 = Players.new(gets.chomp.capitalize)
+print "\n"
+puts "Nice to meet you #{player2.name}!"
+print "\n"
+game_board = Board.new(player1, player2)
+puts 'This is the game board:'
+print "\n"
+puts game_board.display_board
+print "\n"
+puts "The first one to move will be #{game_board.player_start[0]}"
+print "\n"
+puts "youll be playing with #{player1.first_player_icon}."
+print "\n"
+player_choice = Choices.new
 
-puts 'What is your name p1?: '
-player1 = gets.chomp.capitalize
-puts "Welcome #{player1}!!"
+game = Game.new(player1, player2, player_choice, game_board)
 
-puts 'What is your name p2?: '
-player2 = gets.chomp.capitalize
-puts "Nice to meet you #{player2}!"
-
-puts 'This is the game board: '
-puts " #{board[0]} | #{board[1]} | #{board[2]} "
-puts '-----------'
-puts " #{board[3]} | #{board[4]} | #{board[5]} "
-puts '-----------'
-puts " #{board[6]} | #{board[7]} | #{board[8]} "
-
-while update_board.length < 9
-  player_start = [player1, player2].shuffle
-  puts "The first one to move will be #{player_start[0]}, you'll be playing with 'X'."
-  puts "#{player_start[0]} please make a move, choose from 1 to 9 please."
-  player_choice = gets.chomp.to_i
-
-  if player_choice > board.length
-    puts 'Invalid position, choose again!'
-  elsif board.include?(player_choice)
-    update_board.insert((player_choice - 1), 'X')
-
-    puts " #{update_board[0]} | #{update_board[1]} | #{update_board[2]} "
-    puts '-----------'
-    puts " #{update_board[3]} | #{update_board[4]} | #{update_board[5]} "
-    puts '-----------'
-    puts " #{update_board[6]} | #{update_board[7]} | #{update_board[8]} "
-
+while game.not_the_end == true
+  if game.not_the_end == true
+    puts "#{game_board.player_start[0]} please make a move, choose from 1 to 9."
+    game.player_choice = gets.chomp.to_i
+    print "\n"
+    loop do
+      if game.player_choice <= 0 || game.player_choice > 9 || game_board.board[game.player_choice - 1] == player1.first_player_icon || game_board.board[game.player_choice - 1] == player2.second_player_icon
+        puts 'Invalid move!! Choose again'
+        game.player_choice = gets.chomp.to_i
+        print "\n"
+      elsif game.player_choice.positive? || game.player_choice < 9
+        game.game_on_p1
+        break
+      end
+    end
   end
 
-  player_next = player_start.reverse
+  next unless game.not_the_end == true
 
-  puts "Now! #{player_next[0]}, it's your turn! Choose a move!"
-  player_next_choice = gets.chomp.to_i
-
-  if player_next_choice > board.length
-    puts 'Invalid position, choose again!'
-  elsif board.include?(player_next_choice)
-    update_board.insert((player_next_choice - 1), 'O')
-
-    puts " #{update_board[0]} | #{update_board[1]} | #{update_board[2]} "
-    puts '-----------'
-    puts " #{update_board[3]} | #{update_board[4]} | #{update_board[5]} "
-    puts '-----------'
-    puts " #{update_board[6]} | #{update_board[7]} | #{update_board[8]} "
-
-  end
-
-  if update_board.length > 9
-    puts 'Game over'
-  else
-    # if there's a stalemate
-    puts 'It ends in a draw'
+  puts "Now #{game_board.player_next[0]}, it's your turn! Please make a move, choose from 1 to 9."
+  game.player_choice = gets.chomp.to_i
+  print "\n"
+  loop do
+    if game.player_choice <= 0 || game.player_choice > 9 || game_board.board[game.player_choice - 1] == player1.first_player_icon || game_board.board[game.player_choice - 1] == player2.second_player_icon
+      puts 'Invalid move!! Choose again'
+      game.player_choice = gets.chomp.to_i
+      print "\n"
+    elsif game.player_choice.positive? || game.player_choice < 9
+      game.game_on_p2
+      break
+    end
   end
 end
