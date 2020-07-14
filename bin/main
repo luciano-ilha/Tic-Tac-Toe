@@ -1,0 +1,65 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/board'
+require_relative '../lib/choices'
+require_relative '../lib/game'
+require_relative '../lib/players'
+
+puts 'Are you ready for a game of Tic Tac Toe?'
+print "\n"
+print 'What is your name P1?: '
+player1 = Players.new(gets.chomp.capitalize)
+print "\n"
+puts "Welcome #{player1.name}!!"
+print "\n"
+print 'What is your name P2?: '
+player2 = Players.new(gets.chomp.capitalize)
+print "\n"
+puts "Nice to meet you #{player2.name}!"
+print "\n"
+game_board = Board.new(player1, player2)
+puts 'This is the game board:'
+print "\n"
+puts game_board.display_board
+print "\n"
+puts "The first one to move will be #{game_board.player_start[0]}"
+print "\n"
+puts "youll be playing with #{player1.first_player_icon}."
+print "\n"
+player_choice = Choices.new
+
+game = Game.new(player1, player2, player_choice, game_board)
+
+while game.not_the_end == true
+  if game.not_the_end == true
+    puts "#{game_board.player_start[0]} please make a move, choose from 1 to 9."
+    game.player_choice = gets.chomp.to_i
+    print "\n"
+    loop do
+      if game.player_choice <= 0 || game.player_choice > 9 || game_board.board[game.player_choice - 1] == player1.first_player_icon || game_board.board[game.player_choice - 1] == player2.second_player_icon
+        puts 'Invalid move!! Choose again'
+        game.player_choice = gets.chomp.to_i
+        print "\n"
+      elsif game.player_choice.positive? || game.player_choice < 9
+        game.game_on_p1
+        break
+      end
+    end
+  end
+
+  next unless game.not_the_end == true
+
+  puts "Now #{game_board.player_next[0]}, it's your turn! Please make a move, choose from 1 to 9."
+  game.player_choice = gets.chomp.to_i
+  print "\n"
+  loop do
+    if game.player_choice <= 0 || game.player_choice > 9 || game_board.board[game.player_choice - 1] == player1.first_player_icon || game_board.board[game.player_choice - 1] == player2.second_player_icon
+      puts 'Invalid move!! Choose again'
+      game.player_choice = gets.chomp.to_i
+      print "\n"
+    elsif game.player_choice.positive? || game.player_choice < 9
+      game.game_on_p2
+      break
+    end
+  end
+end
