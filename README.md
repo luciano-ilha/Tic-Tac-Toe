@@ -24,6 +24,8 @@
 
 This project is meant for learning and implementing object oriented programming principles in Ruby.
 
+![Screenshot](image/tic-tac-toe-screenshot.png)
+
 ## 🔧 Built with<a name = "built_using"></a>
 
 - [Ruby](https://www.ruby-lang.org/);
