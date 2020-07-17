@@ -6,7 +6,7 @@ class Game
     @player1 = player1
     @player2 = player2
     @game_board = game_board
-    @not_the_end = truechoice = player_choice.player_choice
+    @player_choice = player_choice.player_choice
     @not_the_end = true
     @@counter = 0
   end

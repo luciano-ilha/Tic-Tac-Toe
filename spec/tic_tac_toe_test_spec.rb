@@ -4,8 +4,8 @@ require './lib/players'
 require './lib/choices'
 
 describe Board do
-  let(:player1) { Players.new("John")}
-  let(:player2) { Players.new("Doe")}
+  let(:player1) { Players.new('John') }
+  let(:player2) { Players.new('Doe') }
   let(:inst_board) { Board.new(player1, player2) }
   describe '#display_board' do
     it 'Displays the board for the players.' do
@@ -14,13 +14,13 @@ describe Board do
       "4 | 5 | 6\n" \
       "---------\n" \
       "7 | 8 | 9\n" \
-    end    
+    end
   end
 end
 
 describe Game do
-  let(:player1) { Players.new("John")}
-  let(:player2) { Players.new("Doe")}
+  let(:player1) { Players.new('John') }
+  let(:player2) { Players.new('Doe') }
   let(:game_board) { Board.new(player1, player2) }
   let(:player_choice) { Choices.new }
   let(:game) { Game.new(player1, player2, player_choice, game_board) }
@@ -32,7 +32,7 @@ describe Game do
       "4 | X | 6\n" \
       "---------\n" \
       "7 | 8 | 9\n" \
-    end    
+    end
   end
 
   describe '#game_on_p2' do
