@@ -41,7 +41,7 @@ while game.not_the_end == true
         game.player_choice = gets.chomp.to_i
         print "\n"
       elsif game.player_choice.positive? || game.player_choice < 9
-        game.game_on_p1
+        game.game_on_p1(game.player_choice)
         break
       end
     end
@@ -58,7 +58,7 @@ while game.not_the_end == true
       game.player_choice = gets.chomp.to_i
       print "\n"
     elsif game.player_choice.positive? || game.player_choice < 9
-      game.game_on_p2
+      game.game_on_p2(game.player_choice)
       break
     end
   end
