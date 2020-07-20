@@ -5,11 +5,35 @@ class Game
   def initialize(player1, player2, player_choice, game_board)
     @player1 = player1
     @player2 = player2
-    @player_choice = player_choice.player_choice
     @game_board = game_board
+    @player_choice = player_choice.player_choice
     @not_the_end = true
     @@counter = 0
   end
+
+  def game_on_p1(player_choice)
+    if game_board.board.map! { |num| num == player_choice ? player1.first_player_icon.to_s : num }
+      puts game_board.display_board
+      print "\n"
+      @@counter += 1
+    end
+    check_win
+    a_draw
+    game_board.display_board
+  end
+
+  def game_on_p2(player_choice)
+    if game_board.board.map! { |num| num == player_choice ? player2.second_player_icon.to_s : num }
+      puts game_board.display_board
+      print "\n"
+      @@counter += 1
+    end
+    check_win
+    a_draw
+    game_board.display_board
+  end
+
+  private
 
   def all_equal_p1(arr, player_icon)
     if arr[0] == player_icon && arr[1] == player_icon && arr[2] == player_icon
@@ -49,25 +73,5 @@ class Game
 
     @not_the_end = false
     puts "It's a draw!"
-  end
-
-  def game_on_p1
-    if game_board.board.map! { |num| num == player_choice ? player1.first_player_icon.to_s : num }
-      puts game_board.display_board
-      print "\n"
-      @@counter += 1
-    end
-    check_win
-    a_draw
-  end
-
-  def game_on_p2
-    if game_board.board.map! { |num| num == player_choice ? player2.second_player_icon.to_s : num }
-      puts game_board.display_board
-      print "\n"
-      @@counter += 1
-    end
-    check_win
-    a_draw
   end
 end
