@@ -16,6 +16,8 @@ class Board
     "#{board[6]} | #{board[7]} | #{board[8]}\n" \
   end
 
+  private
+
   def players_shuffle
     @player_name.shuffle
   end
